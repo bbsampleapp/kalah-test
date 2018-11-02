@@ -6,10 +6,9 @@ Feature: Play Kalah
 
   Scenario: client makes call to POST /games
     When the client calls /games
-    Then the client receives status code of 201
-    And the client receives a gameid and url
+    Then the client receives a gameid, url and status code '201'
 
   Scenario: client makes call to PUT /games/{gameid}/pits/{pitid}
-    When the client calls '/games/{gameid}/pits/{pitid}'
-    Then the client receives status code of 200
-    And the client receives a gameid, url and state
+    Given the client calls /games
+    When the client calls /games/gamieid/pits/pitid
+    Then the client receives a gameid, url, state and status code '200'
